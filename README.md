@@ -101,7 +101,8 @@ GROUP BY sex;** - grazins lentele kiek kokios lyties darbuotoju (sudeda nurodyto
 **ALTER tableName <br />
 ADD FOREIGN KEY(tableColumnName) <br />
 REFERENCES otherTableName(otherTableColumnName) <br />
-ON DELETE SET NULL;** <br />
+ON DELETE SET NULL;**
+
 2.  table with combined key example: <br />
 **CREATE TABLE works_with ( <br />
   emp_id INT, <br />
@@ -110,7 +111,8 @@ ON DELETE SET NULL;** <br />
   PRIMARY KEY(emp_id, client_id),  <br />
   FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE, <br />
   FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE <br />
-);** <br />
+);** 
+
 3. inserting data in tables with foreign keys example: <br />
 **INSERT INTO employee VALUES(100, 'David', 'Wallace', '1967-11-17', 'M', 250000, NULL, NULL); <br />
 INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');  UPDATE employee SET branch_id = 1WHERE emp_id = 100;**
@@ -172,7 +174,9 @@ employee table:
 works_with table:
 ![image](https://github.com/raminta17/SQL-theory/assets/62699647/5b424133-c872-42cb-97f9-9c16ad045ebb)
 
-> **task**: find names of all employees who sold more than 30000 to a single client
+ **task**:
+> find names of all employees who sold more than 30000 to a single client
+
  **solution:**
 > SELECT employee.first_name, employee.last_name <br />
 >    FROM employee <br />
