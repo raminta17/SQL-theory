@@ -95,22 +95,23 @@ FROM tableName;** - will show data from columnName but the name of the column wi
 FROM employee <br />
 GROUP BY sex;** - grazins lentele kiek kokios lyties darbuotoju (sudeda nurodyto stulpelio skirtingas reiksmes)
    
-## FOREIGN KEY 
+## FOREIGN KEY AND COMBINED KEY
 
 1. providing foreign key: <br />
 **ALTER tableName <br />
 ADD FOREIGN KEY(tableColumnName) <br />
 REFERENCES otherTableName(otherTableColumnName) <br />
-ON DELETE SET NULL;**
-2.  table with combined key example:
+ON DELETE SET NULL;** <br />
+2.  table with combined key example: <br />
 **CREATE TABLE works_with ( <br />
-emp_id INT, <br />
-client_id INT, <br />
-total_sales INT, <br />
-PRIMARY KEY(emp_id, client_id),  <br />
-FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE, <br />
-FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE );**
-3. inserting data in tables with foreign keys example: 
+  emp_id INT, <br />
+  client_id INT, <br />
+  total_sales INT, <br />
+  PRIMARY KEY(emp_id, client_id),  <br />
+  FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE, <br />
+  FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE <br />
+);** <br />
+3. inserting data in tables with foreign keys example: <br />
 **INSERT INTO employee VALUES(100, 'David', 'Wallace', '1967-11-17', 'M', 250000, NULL, NULL); <br />
 INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');  UPDATE employee SET branch_id = 1WHERE emp_id = 100;**
 
@@ -120,14 +121,15 @@ INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');  UPDATE employee S
 ## WILD CARDS 
 
 finding specific values in the table (like filter)
-1. **%** example:
+
+1. **%** example: <br />
 **SELET * <br />
 FROM tableName <br />
 WHERE columnName LIKE '%valueEnd';** - will display a row from the table that columnName text ends with valueEnd.
 
 **'%valueAnywhere%'** - will find the text anywhere in the seleted column value
 
-2. **_** - any symbol, example:
+2. **_** - any symbol, example: <br />
 **SELET * <br />
 FROM employee <br />
 WHERE birth_date LIKE '____-10%';** - will show the employees that were born in October
@@ -137,10 +139,10 @@ WHERE birth_date LIKE '____-10%';** - will show the employees that were born in
 _it can combine columns from different tables into one, example:_
 
 > SELECT columnName <br />
-> FROM tableName <br />
-> UNION <br />
-> SELECT columnName <br />
-> FROM otherTableName;
+>   FROM tableName <br />
+>   UNION <br />
+>   SELECT columnName <br />
+>   FROM otherTableName;
 
 **RULES:**
 1. select only one column from each table <br />
@@ -151,9 +153,9 @@ _it can combine columns from different tables into one, example:_
 
 used to combine rows from tables based on the related column (useful when table has foreign keys that related to a different table), example:
 > SELECT tableName.columnName, tableName.otherColumnName, otherTableName.columnName <br />
-> FROM tableName  <br />
-> JOIN otherTableName <br />
-> ON table.column = otherTable.relatedColumnName; (_columns that are related_)
+>   FROM tableName  <br />
+>   JOIN otherTableName <br />
+>   ON table.column = otherTable.relatedColumnName; (_columns that are related_)
 
 the example above will display total of 3 columns that has related values
 
@@ -172,13 +174,13 @@ works_with table:
 
 > **task**: find names of all employees who sold more than 30000 to a single client
  **solution:**
-SELECT employee.first_name, employee.last_name <br />
-FROM employee <br />
-WHERE employee.emp_id IN ( <br />
-SELECT works_with.emp_id <br />
-FROM works_with <br />
-WHERE works_with.total_sales > 30000 <br />
-);
+> SELECT employee.first_name, employee.last_name <br />
+>    FROM employee <br />
+>    WHERE employee.emp_id IN ( <br />
+>    SELECT works_with.emp_id <br />
+>    FROM works_with <br />
+>    WHERE works_with.total_sales > 30000 <br />
+> );
 
 **result:**
 ![image](https://github.com/raminta17/SQL-theory/assets/62699647/78183b9f-1f3a-46c8-a73f-3575df490302)
@@ -192,7 +194,7 @@ example (before new employee is added):
 
 STEP 1:
 > CREATE TABLE triggerTable ( <br />
-> message VARCHAR(100) <br />
+>   message VARCHAR(100) <br />
 > ); <br />
 
 STEP 2: <br />
@@ -200,14 +202,14 @@ STEP 2: <br />
 
 STEP 3:
 > CREATE <br />
-> TRIGGER triggerName BEFORE INSERT  _----- BEFORE or AFTER //// INSERT or UPDATE or DELETE_ <br />
-ON employee <br />
-FOR EACH ROW BEGIN <br />
-INSERT INTO triggerTable VALUES('new employee added'); <br />
-END$$ <br />
+>   TRIGGER triggerName BEFORE INSERT  _----- BEFORE or AFTER //// INSERT or UPDATE or DELETE_ <br />
+>   ON employee <br />
+>   FOR EACH ROW BEGIN <br />
+>   INSERT INTO triggerTable VALUES('new employee added'); <br />
+> END$$ <br />
 
 STEP 4:
-DELIMITER ;
+> DELIMITER ;
 
 Now before new entry to employee table we will get new trigger in trigger_test table about newly added employee
 
