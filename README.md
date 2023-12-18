@@ -1,11 +1,17 @@
 # SQL-theory
 
 ### DATA TYPES: 
+
 1.**INT** - sveikieji skaiciai
+
 2. **DECIMAL(M,N)** - M kiek skaiciu is viso, N - kiek skaiciu po kablelio.
+
 3.  **VARCHAR(1)** - text or string, number is the maximum length of the text it can store
+
 4.**BLOB** - large data like images or files
+
 5.**DATE** - yyyy-mm-dd
+
 6.**TIMESTAMP** - yyyy-mm-dd HH:MM:SS
 
 ### command prompt connect reach your database
