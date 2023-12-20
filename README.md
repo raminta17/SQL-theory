@@ -219,3 +219,49 @@ Now before new entry to employee table we will get new trigger in trigger_test t
 
 **To delete a trigger:**
 **DROP TRIGGER triggerName;**
+
+# NODEJS WITH MYSQL
+
+STEP 1:
+
+>create a schema.sql file where you write all the code to create your database,tables and entries and actualy create all of this in your mysql through cmd
+
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/dcb6993e-b5e5-453b-ab8a-5dd1c2db121e)
+
+STEP 2:
+
+> create database.js file where you will write connestion to database and all functions
+> 
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/86798e44-213d-4f8a-82e2-f27e4bbeee0d)
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/7ae2e03f-8ff7-4592-86ca-11b393e69c91)
+
+STEP 3:
+
+>create .env file
+
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/48f3d73c-04a3-4fab-98b5-3116ea7c51f0)
+
+
+STEP 4:
+
+> npm init -y
+> in package.json file write "type": "module" to be able to use modules easily
+
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/2f019106-4133-4456-86e9-270ecb94da4d)
+
+
+STEP 4:
+
+> npm i mysql2 dotenv express@5.0.0-beta.1
+
+make sure correct express version is installed(5 isntead of 4)
+
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/96733c91-3407-405b-86de-d6cd8692b0db)
+
+STEP 5:
+
+> create app.js file
+
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/1da1ac58-f1d2-4912-856d-c3595db5c42b)
+![image](https://github.com/raminta17/SQL-theory/assets/62699647/5f07284b-5e05-4da5-8fb9-69a2abcef7f7)
+
